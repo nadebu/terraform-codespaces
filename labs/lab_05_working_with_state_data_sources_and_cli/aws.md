@@ -74,7 +74,7 @@ resource "aws_vpc" "development" {
   tags = {
     Name        = "development-vpc"
     Environment = "development"
-    Region      = data.aws_region.current.name
+    Region      = data.aws_region.current.region
     Account     = data.aws_caller_identity.current.account_id
     CreatedBy   = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
   }
@@ -152,7 +152,7 @@ output "account_id" {
 
 output "region_name" {
   description = "The current AWS region"
-  value       = data.aws_region.current.name
+  value       = data.aws_region.current.region
 }
 
 output "available_azs" {
@@ -167,7 +167,7 @@ output "vpc_id" {
 
 output "combined_info" {
   description = "Combined region and account information"
-  value       = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
+  value       = "${data.aws_caller_identity.current.account_id}-${data.aws_region.current.region}"
   sensitive   = true
 }
 ```
