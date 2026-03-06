@@ -1,20 +1,23 @@
 # Create the repository
 resource "github_repository" "example" {
-  name        = "terraform-example"
-  description = "Updated repository description"
-  visibility  = "public"
+  name        = var.repository_name
+  description = "Repository managed by Terraform"
+  visibility  = var.repository_visibility
 
   auto_init = true
 
-  has_issues      = true
-  has_discussions = true
-  has_wiki        = false
+  has_issues      = var.repository_features.has_issues
+  has_discussions = var.repository_features.has_discussions
+  has_wiki        = var.repository_features.has_wiki
 
   allow_merge_commit = true
   allow_squash_merge = true
   allow_rebase_merge = true
 
-  topics = ["terraform", "infrastructure-as-code", "learning"]
+  topics = [
+    "terraform",
+    var.environment,
+    "infrastructure-as-code"]
 }
 
 # Create branch protection rule
