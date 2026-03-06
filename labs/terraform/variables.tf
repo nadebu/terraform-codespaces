@@ -1,56 +1,31 @@
-variable "repository_name" {
-  description = "Name of the GitHub repository"
-  type        = string
-  default     = "terraform-example"
-}
-
-variable "repository_visibility" {
-  description = "Visibility of the repository"
-  type        = string
-  default     = "public"
-}
-
 variable "environment" {
-  description = "Environment tag for the repository"
+  description = "Environment name for resource naming"
   type        = string
-  default     = "learning-terraform"
+  default     = "production"
+}
+
+variable "app_name" {
+  description = "Application name for repository"
+  type        = string
+  default     = "application"
+}
+
+variable "team_name" {
+  description = "Base name for the team"
+  type        = string
+  default     = "developers"
 }
 
 variable "repository_features" {
-  description = "Enabled features for the repository"
+  description = "Enabled features for repository"
   type = object({
     has_issues      = bool
-    has_discussions = bool
     has_wiki        = bool
+    has_discussions = bool
   })
   default = {
     has_issues      = true
+    has_wiki        = true
     has_discussions = true
-    has_wiki        = false
   }
-}
-
-# Development Repo Variables
-variable "dev_repository_name" {
-  description = "Name of the Dev GitHub repository"
-  type        = string
-  default     = "development-repo"
-}
-
-variable "dev_repo_issues" {
-  description = "Dev repo issues settings"
-  type        = bool
-  default     = true
-}
-
-variable "dev_discussions" {
-  description = "Dev repo discussions settings"
-  type        = bool
-  default     = true
-}
-
-variable "dev_wiki" {
-  description = "Dev repo wiki settings"
-  type        = bool
-  default     = true
 }
