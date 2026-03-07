@@ -1,9 +1,14 @@
-output "repository_url" {
-  description = "URL of the created repository"
-  value       = github_repository.production.html_url
+output "app_repo_url" {
+  description = "URL of the application repository"
+  value       = github_repository.app.html_url
 }
 
-output "creator_info" {
-  description = "Information about who created the resources"
+output "docs_repo_url" {
+  description = "URL of the documentation repository"
+  value       = github_repository.docs.html_url
+}
+
+output "current_user" {
+  description = "Username of the authenticated user"
   value       = data.github_user.current.login
 }
